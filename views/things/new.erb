@@ -1,0 +1,5 @@
+<form method="POST" action="/users/<%= @user.id %>/things">
+<input name="thing[title]" type="text" placeholder="Thing" />
+<input type="submit" value="Create" />
+</form>
+<a href="/users/<%= @user.id %>">Cancel</a>

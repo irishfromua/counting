@@ -1,0 +1,37 @@
+<h2>Your Profile</h2>
+
+<ul>
+  <li><%= @user.username %></li>
+  <li><%= @user.email %></li>
+</ul>
+
+<h2>Your Things</h2>
+<% @user_things.each do |t| %>
+<p style="display: inline">
+  <%= t.title %>
+  <form style="display: inline" method="POST" action="/users/<%= @user.id %>/things/<%= t.id %>/dec">
+    <input name="_method" type="hidden" value="put" />
+    <input type="submit" value="-1" />
+  </form>
+  <%= t.count %>
+  <form style="display: inline" method="POST" action="/users/<%= @user.id %>/things/<%= t.id %>/inc">
+    <input name="_method" type="hidden" value="put" />
+    <input type="submit" value="+1" />
+  </form>
+  <a href="/users/<%= @user.id %>/things/<%= t.id %>/edit">/edit</a>
+  <form style="display: inline" method="POST" action="/users/<%= @user.id %>/things/<%= t.id %>">
+    <input name="_method" type="hidden" value="delete" />
+    <button type="submit">Delete</button>
+  </form>
+</p>
+<% end %>
+</ul>
+
+<a href="/users/<%= @user.id %>/things/new">/new</a>
+
+<hr />
+
+<form method="POST" action="/sessions">
+  <input name="_method" type="hidden" value="delete" />
+  <button type="submit">Logout</button>
+</form>

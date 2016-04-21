@@ -1,0 +1,6 @@
+<form method="POST" action="/users/<%= @user.id %>/things/<%= @edit_thing.id %>">
+  <input name="_method" type="hidden" value="put"/>
+  <input name="edit_thing[title]" type="text" value="<%= @edit_thing.title %>"/>
+  <input type="submit" value="Save"/>
+</form>
+<a href="/users/<%= @user.id %>">Cancel</a>
